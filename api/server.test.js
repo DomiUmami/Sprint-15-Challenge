@@ -122,9 +122,3 @@ describe('auth endpoints', () => {
 });
 
 
-/*
-[GET] /api/jokes  responds with a "token required" message on missing token
-[POST] /api/auth/login  responds with "username and password required" message if either is not sent
-[POST] /api/auth/register  responds with "username and password required" message if either is not sent
-[POST] /api/auth/register  responds with "username taken" message if username exists in users table
-*/
