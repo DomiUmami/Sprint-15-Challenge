@@ -121,4 +121,3 @@ describe('auth endpoints', () => {
   });
 });
 
-
