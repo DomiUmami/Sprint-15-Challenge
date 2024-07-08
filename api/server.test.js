@@ -46,9 +46,24 @@ describe('Jokes model functions', () => {
       await Joke.createJoke(joke1)
       jokes = await db('jokes')
       expect(jokes).toHaveLength(1)
+      
+      await Joke.createJoke(joke2)
+      jokes = await db('jokes')
+      expect(jokes).toHaveLength(2)
+      
+      await Joke.createJoke(joke3)
+      jokes = await db('jokes')
+      expect(jokes).toHaveLength(3)
+
+    })
+    it('inserted joke and punchline', async () => {
+      const joke = await Joke.createJoke(joke1)
+      expect(joke).toMatchObject({id:1,...joke})
     })
   })
 })
+
+
 
 
 
