@@ -22,11 +22,11 @@ afterAll(async () => {
 
 
 
-test('[0]sanity', () => {
+test('sanity', () => {
   expect(true).not.toBe(false)
 })
 
-test('[1]correct env var', () => {
+test('correct env var', () => {
     expect(process.env.NODE_ENV).toBe('testing')
 })
 
@@ -71,7 +71,7 @@ describe('auth endpoints', () => {
         .post('/api/auth/register')
         .send({ username: 'testuser' });
       expect(res.status).toBe(500);
-      expect(res.body.message).toBe('Error registering user');
+      expect(res.body.message).toBe('username and password required');
     });
   });
 
@@ -115,7 +115,16 @@ describe('auth endpoints', () => {
     it('should return 401 if no token is provided', async () => {
       const res = await request(server).get('/api/jokes');
       expect(res.status).toBe(401);
-      expect(res.body.message).toBe('No token provided');
+      expect(res.body.message).toBe('token required');
+      
     });
   });
 });
+
+
+/*
+[GET] /api/jokes  responds with a "token required" message on missing token
+[POST] /api/auth/login  responds with "username and password required" message if either is not sent
+[POST] /api/auth/register  responds with "username and password required" message if either is not sent
+[POST] /api/auth/register  responds with "username taken" message if username exists in users table
+*/

@@ -13,6 +13,6 @@ module.exports = (req, res, next) => {
       }
     });
   } else {
-    res.status(401).json({ message: 'No token provided' });
+    res.status(401).json({ message: 'token required' });
   }
 }

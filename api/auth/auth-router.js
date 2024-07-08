@@ -11,7 +11,7 @@ router.post('/register', async (req, res) => {
     const newUser = await Users.add({ username, password: hash });
     res.status(201).json(newUser);
   } catch (err) {
-    res.status(500).json({ message: 'Error registering user' });
+    res.status(500).json({ message: 'username and password required' });
   }
 });
 
@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
       res.status(401).json({ message: 'Invalid credentials' });
     }
   } catch (err) {
-    res.status(500).json({ message: 'Error logging in' });
+    res.status(500).json({ message: 'username and password required' });
   }
 });
 
